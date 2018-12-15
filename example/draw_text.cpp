@@ -38,6 +38,6 @@ int main() {
     using namespace keywords;
     auto www = "World"s;
     draw_text(x = 1, y = 2, msg = "Hello");       // Specify parameters by keywords.
-    draw_text(msg = www, x = 3, y = 4, width = 8);// Can change a parameter order.
-    draw_text(5, 6, "GoodBye", width = 2);        // Can specify parameters by positions.
+    draw_text(msg = www, x = 3, y = 4, width = 8);
+    draw_text(5, 6, "GoodBye", width = 2);        // You can also specify parameters by positions.
 }
