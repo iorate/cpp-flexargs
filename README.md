@@ -26,7 +26,7 @@ namespace keywords {
 
 template <class ...Args>                          // In Python:
 void draw_text(Args &&...args) {                  // def draw_text(x: int, y: int, msg: Any, *, width: int = 4) -> None:
-    auto &&[x, y, msg, width] = match(
+    auto [x, y, msg, width] = match(
         parameter<int>(keywords::x),
         parameter<int>(keywords::y),
         parameter(keywords::msg),
