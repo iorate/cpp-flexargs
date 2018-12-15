@@ -7,6 +7,7 @@
 // http://www.boost.org/LICENSE_1_0.txt)
 
 #include "common.hpp"
+#include <vector>
 #include <boost/core/lightweight_test.hpp>
 using namespace std::literals;
 using namespace flexargs;
@@ -25,11 +26,26 @@ void f(Args &&...args) {
     BOOST_TEST_EQ(w, 4);
 }
 
+template <class ...Args>
+void g(Args &&...args) {
+    auto [x, y] = match(
+        parameter(keywords::x),
+        parameter<std::vector<std::string>>(keywords::y),
+        std::forward<Args>(args)...
+    );
+    BOOST_TEST((std::vector<std::string>(x) == std::vector{"a"s, "b"s}));
+    BOOST_TEST((y == std::vector{"c"s, "d"s}));
+}
+
 int main() {
     using namespace keywords;
+
     f(1, z = 3);
     f(1, 2, z = 3, w = 4);
     f(x = 1, y = 2, z = 3, w = 4);
     f(w = 4, z = 3, y = 2, x = 1);
+
+    g(x = {"a"s, "b"s}, y = {"c"s, "d"s});
+
     return boost::report_errors();
 }

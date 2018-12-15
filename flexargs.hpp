@@ -18,6 +18,7 @@
 #endif
 
 #include <cstddef>
+#include <initializer_list>
 #include <tuple>
 #include <type_traits>
 #include <utility>
@@ -574,6 +575,11 @@ struct keyword {
     template <class Val>
     constexpr detail::keyword_argument<Id, Val> operator=(Val &&val) const {
         return { std::forward<Val>(val) };
+    }
+
+    template <class T>
+    constexpr detail::keyword_argument<Id, std::initializer_list<T>> operator=(std::initializer_list<T> &&il) const {
+        return { std::move(il) };
     }
 };
 
