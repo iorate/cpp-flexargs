@@ -20,7 +20,7 @@ namespace keywords {
 template <class ...Args>
 constexpr auto multiply_v1(Args &&...args) {
     auto [lhs, rhs] = match(
-        parameter<std::is_arithmetic>(keywords::lhs),  // a parameter can have a type constraint.
+        parameter<std::is_arithmetic>(keywords::lhs),  // A parameter can have a type constraint.
         parameter<std::is_arithmetic>(keywords::rhs),
         std::forward<Args>(args)...
     );
