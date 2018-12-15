@@ -16,7 +16,7 @@
 #include "../flexargs.hpp"
 using namespace flexargs;
 
-int calc1(std::string_view op, int lhs = 100, int rhs = 200) {
+int calc_v0(std::string_view op, int lhs = 100, int rhs = 200) {
     if (op == "add") {
         return lhs + rhs;
     } else if (op == "sub") {
@@ -41,7 +41,7 @@ namespace keywords {
 }
 
 template <class ...Args>
-int calc2(Args &&...args) {
+int calc_v1(Args &&...args) {
     auto [op, lhs, rhs] = match(
         parameter<std::string_view>(keywords::op),
         parameter<int>(keywords::lhs) = 100,
@@ -68,17 +68,17 @@ int main() {
     using namespace keywords;
     constexpr int N = 100000000;
     {
-        std::cout << "call calc1() " << N << " times:\n";
+        std::cout << "call calc_v0() " << N << " times:\n";
         boost::timer::auto_cpu_timer timer;
         for (int i = 0; i < N; ++i) {
-            calc1("sub", 999);
+            calc_v0("sub", 999);
         }
     }
     {
-        std::cout << "call calc2() " << N << " times:\n";
+        std::cout << "call calc_v1() " << N << " times:\n";
         boost::timer::auto_cpu_timer timer;
         for (int i = 0; i < N; ++i) {
-            calc2(op = "sub", lhs = 999);
+            calc_v1(op = "sub", lhs = 999);
         }
     }
 }
@@ -87,8 +87,8 @@ int main() {
 $ g++ -std=c++17 -O2 performance.cpp -lboost_timer -o performance
 
 $ ./performance
-call calc1() 100000000 times:
+call calc_v0() 100000000 times:
  0.284747s wall, 0.296875s user + 0.000000s system = 0.296875s CPU (104.3%)
-call calc2() 100000000 times:
+call calc_v1() 100000000 times:
  0.729618s wall, 0.718750s user + 0.000000s system = 0.718750s CPU (98.5%)
 */
