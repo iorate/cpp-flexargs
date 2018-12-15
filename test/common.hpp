@@ -12,10 +12,10 @@
 #include "../flexargs.hpp"
 
 namespace keywords {
-    constexpr flexargs::keyword<struct x_> x;
-    constexpr flexargs::keyword<struct y_> y;
-    constexpr flexargs::keyword<struct z_> z;
-    constexpr flexargs::keyword<struct w_> w;
+    inline constexpr flexargs::keyword<struct x_> x;
+    inline constexpr flexargs::keyword<struct y_> y;
+    inline constexpr flexargs::keyword<struct z_> z;
+    inline constexpr flexargs::keyword<struct w_> w;
 }
 
 template <class T, class U>

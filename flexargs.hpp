@@ -86,7 +86,7 @@ template <class Msg>
 struct is_error<type_error<Msg>> : std::true_type {};
 
 template <class T>
-constexpr bool is_error_v = is_error<T>::value;
+inline constexpr bool is_error_v = is_error<T>::value;
 
 /* Parameters */
 
@@ -135,7 +135,7 @@ template <class Id, class Pass, bool IsKeyword, class Def>
 struct is_parameter<default_parameter<Id, Pass, IsKeyword, Def>> : std::true_type {};
 
 template <class T>
-constexpr bool is_parameter_v = is_parameter<T>::value;
+inline constexpr bool is_parameter_v = is_parameter<T>::value;
 
 struct forward_pass {
     template <class T>
@@ -210,7 +210,7 @@ struct keyword_argument {
 /* Splitters */
 
 template <std::size_t N>
-constexpr std::integral_constant<std::size_t, N> size_c = {};
+inline constexpr std::integral_constant<std::size_t, N> size_c = {};
 
 template <class ParamsAndArgs, class Index>
 constexpr auto find_non_param_i([[maybe_unused]] ParamsAndArgs &params_and_args, [[maybe_unused]] Index index) {
@@ -404,7 +404,7 @@ constexpr auto validate_args(Args &&args) {
 
 /* Matchers */
 
-constexpr std::size_t npos = static_cast<std::size_t>(-1);
+inline constexpr std::size_t npos = static_cast<std::size_t>(-1);
 
 template <std::size_t>
 constexpr auto initialize_param_ctors_ii() {
