@@ -12,8 +12,8 @@
 using namespace flexargs;
 
 namespace keywords {
-    constexpr keyword<struct x_> x;
-    constexpr keyword<struct y_> y;
+    inline constexpr keyword<struct x_> x;
+    inline constexpr keyword<struct y_> y;
 }
 
 template <class ...Args>                          // In Python:

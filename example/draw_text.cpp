@@ -17,10 +17,10 @@ using namespace std::literals;
 using namespace flexargs;
 
 namespace keywords {
-    constexpr keyword<struct x_> x;
-    constexpr keyword<struct y_> y;
-    constexpr keyword<struct msg_> msg;
-    constexpr keyword<struct width_> width;
+    inline constexpr keyword<struct x_> x;
+    inline constexpr keyword<struct y_> y;
+    inline constexpr keyword<struct msg_> msg;
+    inline constexpr keyword<struct width_> width;
 }
 
 template <class ...Args>                          // In Python:

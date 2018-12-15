@@ -35,9 +35,9 @@ int calc_v0(std::string_view op, int lhs = 100, int rhs = 200) {
 }
 
 namespace keywords {
-    constexpr keyword<struct op_> op;
-    constexpr keyword<struct lhs_> lhs;
-    constexpr keyword<struct rhs_> rhs;
+    inline constexpr keyword<struct op_> op;
+    inline constexpr keyword<struct lhs_> lhs;
+    inline constexpr keyword<struct rhs_> rhs;
 }
 
 template <class ...Args>

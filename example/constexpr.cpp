@@ -11,8 +11,8 @@
 using namespace flexargs;
 
 namespace keywords {
-    constexpr keyword<struct lhs_> lhs;
-    constexpr keyword<struct rhs_> rhs;
+    inline constexpr keyword<struct lhs_> lhs;
+    inline constexpr keyword<struct rhs_> rhs;
 }
 
 template <class ...Args>

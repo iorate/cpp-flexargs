@@ -18,10 +18,10 @@ using namespace std::literals;
 using namespace flexargs;
 
 namespace keywords {
-    constexpr keyword<struct x_> x;
-    constexpr keyword<struct y_> y;
-    constexpr keyword<struct msg_> msg;
-    constexpr keyword<struct width_> width;
+    inline constexpr keyword<struct x_> x;
+    inline constexpr keyword<struct y_> y;
+    inline constexpr keyword<struct msg_> msg;
+    inline constexpr keyword<struct width_> width;
 }
 
 template <class ...Args>                          // In Python:
@@ -79,8 +79,8 @@ greet_v1.cpp
 using namespace flexargs;
 
 namespace keywords {
-    constexpr keyword<struct name_> name;         // Define a keyword.
-    constexpr keyword<struct out_> out;           // A template argument should be a unique type.
+    inline constexpr keyword<struct name_> name;  // Define a keyword.
+    inline constexpr keyword<struct out_> out;    // A template argument should be a unique type.
 }
 
 template <class ...Args>                          // In Python:
@@ -110,8 +110,8 @@ greet_v2.cpp
 using namespace flexargs;
 
 namespace keywords {
-    constexpr keyword<struct name_> name;
-    constexpr keyword<struct out_> out;
+    inline constexpr keyword<struct name_> name;
+    inline constexpr keyword<struct out_> out;
 }
 
 template <class ...Args>                          // In Python:
@@ -147,8 +147,8 @@ compile_error.cpp
 using namespace flexargs;
 
 namespace keywords {
-    constexpr keyword<struct x_> x;
-    constexpr keyword<struct y_> y;
+    inline constexpr keyword<struct x_> x;
+    inline constexpr keyword<struct y_> y;
 }
 
 template <class ...Args>                          // In Python:
@@ -225,9 +225,9 @@ int calc_v0(std::string_view op, int lhs = 100, int rhs = 200) {
 }
 
 namespace keywords {
-    constexpr keyword<struct op_> op;
-    constexpr keyword<struct lhs_> lhs;
-    constexpr keyword<struct rhs_> rhs;
+    inline constexpr keyword<struct op_> op;
+    inline constexpr keyword<struct lhs_> lhs;
+    inline constexpr keyword<struct rhs_> rhs;
 }
 
 template <class ...Args>
@@ -295,8 +295,8 @@ constexpr.cpp
 using namespace flexargs;
 
 namespace keywords {
-    constexpr keyword<struct lhs_> lhs;
-    constexpr keyword<struct rhs_> rhs;
+    inline constexpr keyword<struct lhs_> lhs;
+    inline constexpr keyword<struct rhs_> rhs;
 }
 
 template <class ...Args>
@@ -328,8 +328,8 @@ sfinae.cpp
 using namespace flexargs;
 
 namespace keywords {
-    constexpr keyword<struct lhs_> lhs;
-    constexpr keyword<struct rhs_> rhs;
+    inline constexpr keyword<struct lhs_> lhs;
+    inline constexpr keyword<struct rhs_> rhs;
 }
 
 template <class ...Args>

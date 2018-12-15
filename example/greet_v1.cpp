@@ -12,8 +12,8 @@
 using namespace flexargs;
 
 namespace keywords {
-    constexpr keyword<struct name_> name;         // Define a keyword.
-    constexpr keyword<struct out_> out;           // A template argument should be a unique type.
+    inline constexpr keyword<struct name_> name;  // Define a keyword.
+    inline constexpr keyword<struct out_> out;    // A template argument should be a unique type.
 }
 
 template <class ...Args>                          // In Python:
