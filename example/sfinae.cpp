@@ -20,7 +20,7 @@ namespace keywords {
 template <class ...Args>
 constexpr auto multiply_v1(Args &&...args) {
     auto [lhs, rhs] = match(
-        parameter<std::is_arithmetic>(keywords::lhs),
+        parameter<std::is_arithmetic>(keywords::lhs),  // a parameter can have a type constraint.
         parameter<std::is_arithmetic>(keywords::rhs),
         std::forward<Args>(args)...
     );
@@ -29,13 +29,11 @@ constexpr auto multiply_v1(Args &&...args) {
 
 template <
     class ...Args,
-    class Params = decltype(match_(
-        parameter<std::is_arithmetic>(keywords::lhs),
+    class Params = decltype(match_(                    // A result type of 'match_()' is a tuple of parameter types.
+        parameter<std::is_arithmetic>(keywords::lhs),  // You can use it for further validation of parameter types.
         parameter<std::is_arithmetic>(keywords::rhs),
         std::declval<Args>()...
     ))
-    // 'Params' is 'std::tuple<parameter-types...>'.
-    // You can use it for further validation of parameter types.
 >
 constexpr auto multiply_v2(Args &&...args) {
     auto [lhs, rhs] = match(
