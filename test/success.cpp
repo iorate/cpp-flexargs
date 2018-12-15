@@ -14,7 +14,7 @@ using namespace flexargs;
 
 template <class ...Args>
 void f(Args &&...args) {
-    auto &&[x, y, z, w] = match(
+    auto [x, y, z, w] = match(
         parameter(keywords::x),
         parameter<int>(keywords::y) = 2,
         keyword_parameter<std::is_integral>(keywords::z),
