@@ -25,7 +25,8 @@ void greet_v2(Args &&...args) {                   // def greet_v2(name: std.stri
         keyword_parameter<std::ostream &>(keywords::out) = std::cout,
                                                   // Declare a keyword-only parameter.
                                                   // It can be specified only by a keyword.
-        std::forward<Args>(args)...);
+        std::forward<Args>(args)...
+    );
     out << "Hello, " << name << "!\n";
 }
 

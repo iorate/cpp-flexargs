@@ -30,7 +30,8 @@ void draw_text(Args &&...args) {                  // def draw_text(x: int, y: in
         parameter<int>(keywords::y),
         parameter(keywords::msg),
         keyword_parameter<int>(keywords::width) = 4,
-        std::forward<Args>(args)...);
+        std::forward<Args>(args)...
+    );
     std::cout << "(" << std::setw(width) << x << "," << std::setw(width) << y << ") : " << msg << std::endl;
 }
 

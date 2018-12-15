@@ -21,7 +21,8 @@ void greet_v1(Args &&...args) {                   // def greet_v1(name, out = st
     auto [name, out] = match(
         parameter(keywords::name),                // Declare a parameter.
         parameter(keywords::out) = std::cout,     // A parameter can have a default value.
-        std::forward<Args>(args)...);
+        std::forward<Args>(args)...
+    );
     out << "Hello, " << name << "!\n";
 }
 

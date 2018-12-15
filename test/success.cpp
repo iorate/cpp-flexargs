@@ -19,7 +19,8 @@ void f(Args &&...args) {
         parameter<int>(keywords::y) = 2,
         keyword_parameter<std::is_integral>(keywords::z),
         keyword_parameter(keywords::w) = 4,
-        std::forward<Args>(args)...);
+        std::forward<Args>(args)...
+    );
     BOOST_TEST_EQ(x, 1);
     BOOST_TEST_EQ(y, 2);
     BOOST_TEST_EQ(z, 3);

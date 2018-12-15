@@ -20,7 +20,8 @@ constexpr auto add(Args &&...args) {
     auto [lhs, rhs] = match(
         parameter(keywords::lhs),
         parameter(keywords::rhs),
-        std::forward<Args>(args)...);
+        std::forward<Args>(args)...
+    );
     return lhs + rhs;
 }
 

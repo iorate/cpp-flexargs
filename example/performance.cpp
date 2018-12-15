@@ -46,7 +46,8 @@ int calc_v1(Args &&...args) {
         parameter<std::string_view>(keywords::op),
         parameter<int>(keywords::lhs) = 100,
         parameter<int>(keywords::rhs) = 200,
-        std::forward<Args>(args)...);
+        std::forward<Args>(args)...
+    );
     if (op == "add") {
         return lhs + rhs;
     } else if (op == "sub") {

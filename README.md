@@ -31,7 +31,8 @@ void draw_text(Args &&...args) {                  // def draw_text(x: int, y: in
         parameter<int>(keywords::y),
         parameter(keywords::msg),
         keyword_parameter<int>(keywords::width) = 4,
-        std::forward<Args>(args)...);
+        std::forward<Args>(args)...
+    );
     std::cout << "(" << std::setw(width) << x << "," << std::setw(width) << y << ") : " << msg << std::endl;
 }
 
@@ -83,7 +84,8 @@ void greet_v1(Args &&...args) {                   // def greet_v1(name, out = st
     auto [name, out] = match(
         parameter(keywords::name),                // Declare a parameter.
         parameter(keywords::out) = std::cout,     // A parameter can have a default value.
-        std::forward<Args>(args)...);
+        std::forward<Args>(args)...
+    );
     out << "Hello, " << name << "!\n";
 }
 
@@ -114,7 +116,8 @@ void greet_v2(Args &&...args) {                   // def greet_v2(name: std.stri
         keyword_parameter<std::ostream &>(keywords::out) = std::cout,
                                                   // Declare a keyword-only parameter.
                                                   // It can be specified only by a keyword.
-        std::forward<Args>(args)...);
+        std::forward<Args>(args)...
+    );
     out << "Hello, " << name << "!\n";
 }
 
@@ -147,7 +150,8 @@ void f(Args &&...args) {                          // def f(x, y):
     auto [x, y] = match(
         parameter(keywords::x),
         parameter(keywords::y),
-        std::forward<Args>(args)...);
+        std::forward<Args>(args)...
+    );
     std::cout << "x = " << x << "\n";
     std::cout << "y = " << y << "\n";
 }
@@ -163,7 +167,7 @@ GCC 8.2.0 and Clang 7.0.0 show the following error messages.
 ```
 $ g++ -std=c++17 compile_error.cpp
 compile_error.cpp: In instantiation of 'void f(Args&& ...) [with Args = {int, int, flexargs::detail::keyword_argument<keywords::x_, int>}]':
-compile_error.cpp:31:18:   required from here
+compile_error.cpp:32:18:   required from here
 compile_error.cpp:21:10: error: cannot decompose class type 'flexargs::detail::syntax_error<flexargs::detail::duplicate_argument<keywords::x_> >' without non-static data members
      auto [x, y] = match(
           ^~~~~~
@@ -172,7 +176,7 @@ $ clang++ -std=c++17 compile_error.cpp
 compile_error.cpp:21:10: error: type 'flexargs::detail::syntax_error<flexargs::detail::duplicate_argument<keywords::x_> >' decomposes into 0 elements, but 2 names were provided
     auto [x, y] = match(
          ^
-compile_error.cpp:31:5: note: in instantiation of function template specialization 'f<int, int, flexargs::detail::keyword_argument<keywords::x_, int> >' requested here
+compile_error.cpp:32:5: note: in instantiation of function template specialization 'f<int, int, flexargs::detail::keyword_argument<keywords::x_, int> >' requested here
     f(1, 2, x = 3);
     ^
 1 error generated.
@@ -226,7 +230,8 @@ int calc_v1(Args &&...args) {
         parameter<std::string_view>(keywords::op),
         parameter<int>(keywords::lhs) = 100,
         parameter<int>(keywords::rhs) = 200,
-        std::forward<Args>(args)...);
+        std::forward<Args>(args)...
+    );
     if (op == "add") {
         return lhs + rhs;
     } else if (op == "sub") {

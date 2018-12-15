@@ -546,7 +546,8 @@ constexpr decltype(auto) construct_params_ii([[maybe_unused]] Param &&param, [[m
 template <class Params, class Args, class ParamCtors, std::size_t ...ParamIndices>
 constexpr auto construct_params_i(Params &&params, Args &&args, ParamCtors param_ctors, std::index_sequence<ParamIndices...>) {
     return std::tuple<decltype(construct_params_ii(std::get<ParamIndices>(std::move(params)), std::move(args), std::get<ParamIndices>(param_ctors)))...>(
-            construct_params_ii(std::get<ParamIndices>(std::move(params)), std::move(args), std::get<ParamIndices>(param_ctors))...);
+        construct_params_ii(std::get<ParamIndices>(std::move(params)), std::move(args), std::get<ParamIndices>(param_ctors))...
+    );
 }
 
 template <class Params, class Args, class ParamCtors>
