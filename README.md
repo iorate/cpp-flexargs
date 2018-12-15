@@ -279,6 +279,37 @@ call calc_v1() 100000000 times:
 ```
 When I compiled it by GCC 8.2.0 with '-O2' flag and executed it in my environment, the extra execution time was approximately 0.45s. That means the overhead per call was 4.5ns, which is probably an acceptable value in most cases.
 
+## Constant Expressions
+cpp-flexargs is constexpr-friendly.
+
+constexpr.cpp
+```cpp
+#include <utility>
+#include "../flexargs.hpp"
+using namespace flexargs;
+
+namespace keywords {
+    constexpr keyword<struct lhs_> lhs;
+    constexpr keyword<struct rhs_> rhs;
+}
+
+template <class ...Args>
+constexpr auto add(Args &&...args) {
+    auto [lhs, rhs] = match(
+        parameter(keywords::lhs),
+        parameter(keywords::rhs),
+        std::forward<Args>(args)...
+    );
+    return lhs + rhs;
+}
+
+int main() {
+    using namespace keywords;
+    static_assert(add(lhs = 3, rhs = 4) == 7);
+}
+```
+Unfortunately, the above example cannot be successfully compiled by MSVC 15.9.3.
+
 ## SFINAE
 To raise substitution failure when invalid arguments are passed, use `match_()` in a function signature instead of `match()`.
 
