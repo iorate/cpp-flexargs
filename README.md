@@ -257,7 +257,7 @@ int calc_v1(Args &&...args) {
 
 int main() {
     using namespace keywords;
-    constexpr int N = 100000000;
+    constexpr int N = 100'000'000;
     {
         std::cout << "call calc_v0() " << N << " times:\n";
         boost::timer::auto_cpu_timer timer;
