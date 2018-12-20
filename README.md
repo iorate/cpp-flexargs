@@ -187,7 +187,7 @@ compile_error.cpp:32:5: note: in instantiation of function template specializati
     ^
 1 error generated.
 ```
-Pay attention to the type `flexargs::detail::syntax_error<flexargs::detail::duplicate_argument<keywords::x_> >`, which represents the error message.
+Pay attention to the type `flexargs::detail::syntax_error<flexargs::detail::duplicate_argument<keywords::x_> >`, which represents the error.
 
 ## Performance
 The implementation of cpp-flexargs consists of many function calls, but most of which can be omitted by optimization.
