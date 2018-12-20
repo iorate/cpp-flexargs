@@ -145,7 +145,8 @@ struct forward_pass {
     using apply_default = std::conditional_t<
         !std::is_move_constructible_v<T>,
         type_error<not_movable<T>>,
-        T>;
+        T
+    >;
 };
 
 template <class Type>
@@ -154,7 +155,8 @@ struct convert_pass {
     using apply = std::conditional_t<
         !std::is_convertible_v<T, Type>,
         type_error<not_convertible<T, Type>>,
-        Type>;
+        Type
+    >;
 
     template <class T>
     using apply_default = apply<T>;
@@ -166,7 +168,8 @@ struct validate_pass {
     using apply = std::conditional_t<
         !Constraint<T>::value,
         type_error<not_satisfying<T, Constraint>>,
-        T &&>;
+        T &&
+    >;
 
     template <class T>
     using apply_default = std::conditional_t<
@@ -175,7 +178,9 @@ struct validate_pass {
         std::conditional_t<
             !std::is_move_constructible_v<T>,
             type_error<not_movable<T>>,
-            T>>;
+            T
+        >
+    >;
 };
 
 /* Arguments */
