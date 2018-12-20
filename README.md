@@ -95,8 +95,8 @@ void greet_v1(Args &&...args) {                   // def greet_v1(name, out = st
 
 int main() {
     using namespace keywords;
-    greet_v1("World");
-    greet_v1(out = std::cerr, name = "World");    // A parameter can also be specified by a keyword.
+    greet_v1(out = std::cerr, name = "World");
+    greet_v1("World");                            // A parameter can also be specified by a position.
 }
 ```
 You can declare typed parameters and keyword-only parameters.
