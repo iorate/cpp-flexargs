@@ -288,8 +288,8 @@ constexpr auto validate_each_adjacent_i([[maybe_unused]] Params &params, [[maybe
         return nullptr;
     } else {
         auto np = pred(std::get<Index::value>(params), std::get<Index::value + 1>(params));
-        if constexpr (is_error_v<std::remove_reference_t<decltype(np)>>) {
-            return static_cast<decltype(np)>(np);
+        if constexpr (is_error_v<decltype(np)>) {
+            return np;
         } else {
             return validate_each_adjacent_i(params, pred, size_c<Index::value + 1>);
         }
