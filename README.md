@@ -368,7 +368,7 @@ int main() {
 }
 ```
 ```
-$ g++ sfinae.cpp
+$ g++ -std=c++17 sfinae.cpp
 sfinae.cpp: In instantiation of 'constexpr auto multiply_v1(Args&& ...) [with Args = {flexargs::detail::keyword_argument<keywords::lhs_, int>, flexargs::detail::keyword_argument<keywords::rhs_, const char (&)[2]>}]':
 sfinae.cpp:52:49:   required from here
 sfinae.cpp:22:10: error: cannot decompose class type 'flexargs::detail::type_error<flexargs::detail::not_satisfying<const char (&)[2], std::is_arithmetic> >' without non-static data members
