@@ -9,11 +9,7 @@
 #ifndef FLEXARGS_HPP_INCLUDED
 #define FLEXARGS_HPP_INCLUDED
 
-#ifdef _MSVC_LANG
-#if _MSVC_LANG < 201703L
-#include "cpp-flexargs: the compiler does not support C++17"
-#endif
-#elif __cplusplus < 201703L
+#if _MSVC_LANG < 201703L && __cplusplus < 201703L
 #include "cpp-flexargs: the compiler does not support C++17"
 #endif
 
